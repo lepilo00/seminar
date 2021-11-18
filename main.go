@@ -13,6 +13,9 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+/////komentar
+//proba za git
+
 type (
 	Handler struct {
 		uporabnik *uporabnik.Uporabnik
