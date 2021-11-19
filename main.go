@@ -9,6 +9,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/gocolly/colly"
 	"github.com/lepilo00/seminar/shramba"
+	"github.com/lepilo00/seminar/storitev/oglas"
 	"github.com/lepilo00/seminar/storitev/uporabnik"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -16,6 +17,7 @@ import (
 type (
 	Handler struct {
 		uporabnik *uporabnik.Uporabnik
+		oglas *oglas.Oglas
 	}
 )
 
@@ -29,6 +31,10 @@ func NovHandler(uporabnik *uporabnik.Uporabnik) *Handler {
 	return &Handler{
 		uporabnik: uporabnik,
 	}
+}
+
+func NovHandler1(oglas *oglas.Oglass) *Handler{
+	
 }
 
 func HashPass(pass string) (string, error) {
@@ -79,6 +85,8 @@ func (h *Handler) Registracija(w http.ResponseWriter, r *http.Request) {
 	h.uporabnik.Ustvari(usr1)
 }
 
+func 
+
 func main() {
 	repo, err := shramba.NovUpoabnikRepozitory()
 	if err != nil {
@@ -87,11 +95,12 @@ func main() {
 	defer repo.DB.Close()
 
 	u := uporabnik.Nov(repo)
-
+	oglas:=oglas.Nov()
 	h := NovHandler(u)
 
 	http.HandleFunc("/", index)
 	http.HandleFunc("/login", h.Registracija)
+	http.HandleFunc("/oglas", h.Oglas)
 	http.ListenAndServe(":9090", nil)
 
 }
