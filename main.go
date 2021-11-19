@@ -17,7 +17,7 @@ import (
 type (
 	Handler struct {
 		uporabnik *uporabnik.Uporabnik
-		oglas *oglas.Oglas
+		oglas     *oglas.Oglas
 	}
 )
 
@@ -33,8 +33,10 @@ func NovHandler(uporabnik *uporabnik.Uporabnik) *Handler {
 	}
 }
 
-func NovHandler1(oglas *oglas.Oglass) *Handler{
-	
+func NovHandler1(oglas *oglas.Oglas) *Handler {
+	return &Handler{
+		oglas: oglas,
+	}
 }
 
 func HashPass(pass string) (string, error) {
@@ -85,7 +87,9 @@ func (h *Handler) Registracija(w http.ResponseWriter, r *http.Request) {
 	h.uporabnik.Ustvari(usr1)
 }
 
-func 
+func (hh *Handler) ObjavaOglasa(w http.ResponseWriter, r *http.Request) {
+
+}
 
 func main() {
 	repo, err := shramba.NovUpoabnikRepozitory()
@@ -95,12 +99,13 @@ func main() {
 	defer repo.DB.Close()
 
 	u := uporabnik.Nov(repo)
-	oglas:=oglas.Nov()
+	ogs := oglas.Nov(repo)
 	h := NovHandler(u)
+	hh := NovHandler1(ogs)
 
 	http.HandleFunc("/", index)
 	http.HandleFunc("/login", h.Registracija)
-	http.HandleFunc("/oglas", h.Oglas)
+	http.HandleFunc("/oglas", hh.ObjavaOglasa)
 	http.ListenAndServe(":9090", nil)
 
 }
