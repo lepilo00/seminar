@@ -17,7 +17,7 @@ import (
 type (
 	Handler struct {
 		uporabnik *uporabnik.Uporabnik
-		oglas     *oglas.Oglas
+		oglas     *oglas.Neki
 	}
 )
 
@@ -53,7 +53,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 	tpl.ExecuteTemplate(w, "index.html", nil)
 }
 
-func (h *Handler) Registracija(w http.ResponseWriter, r *http.Request) {
+/*func (h *Handler) Registracija(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
@@ -85,7 +85,7 @@ func (h *Handler) Registracija(w http.ResponseWriter, r *http.Request) {
 	tpl.ExecuteTemplate(w, "login.html", nil)
 
 	h.uporabnik.Ustvari(usr1)
-}
+}*/
 
 func (hh *Handler) ObjavaOglasa(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
@@ -99,12 +99,12 @@ func (hh *Handler) ObjavaOglasa(w http.ResponseWriter, r *http.Request) {
 
 	oglas1 := oglas.Oglas{
 		IDoglasa: 1,
-		AvtoOglas: Avto{
+		AvtoOglas: oglas.Avto{
 			ZnamkaAvta:   r.FormValue("username"),
 			ModelAvta:    r.FormValue("username"),
-			Cena:         r.FormValue("username"),
-			Letnik:       r.FormValue("username"),
-			PrevozenihKM: r.FormValue("username"),
+			Cena:         23,
+			Letnik:       1,
+			PrevozenihKM: 15,
 			Gorivo:       r.FormValue("username"),
 			PrvaReg:      r.FormValue("username"),
 			LetoProiz:    r.FormValue("username"),
@@ -113,6 +113,7 @@ func (hh *Handler) ObjavaOglasa(w http.ResponseWriter, r *http.Request) {
 			KrajOgleda:   r.FormValue("username"),
 		},
 	}
+
 }
 
 func main() {
@@ -122,10 +123,15 @@ func main() {
 	}
 	defer repo.DB.Close()
 
+	repoOglas, err := shramba.NovOglasRepozitory()
+	if err != nil {
+		fmt.Println(err)
+	}
+
 	u := uporabnik.Nov(repo)
-	ogs := oglas.Nov(repoU)
+	oglas12 := oglas.Nov(repoOglas)
 	h := NovHandler(u)
-	hh := NovHandler1(ogs)
+	hh := NovHandler1(oglas12)
 
 	http.HandleFunc("/", index)
 	http.HandleFunc("/login", h.Registracija)

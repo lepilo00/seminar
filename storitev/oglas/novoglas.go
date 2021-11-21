@@ -21,18 +21,18 @@ type Avto struct {
 }
 
 type Neki struct {
-	repoOglas repozitorijInterface
+	repoOglas repozitorijOglasInterface
 }
-type repozitorijInterface interface {
+type repozitorijOglasInterface interface {
 	UstvariOglas(ogs Oglas) error
 }
 
-func Nov(repo repozitorijInterface) *Neki {
+func Nov(repoOglas repozitorijOglasInterface) *Neki {
 	return &Neki{
-		repoOglas: repo,
+		repoOglas: repoOglas,
 	}
 }
 
-func (og *Neki) Ustvari(oglas Oglas) error {
-	return og.repoOglas.UstvariOglas(oglas)
+func (oglas12 *Neki) Ustvari(ogs Oglas) error {
+	return oglas12.repoOglas.UstvariOglas(ogs)
 }
