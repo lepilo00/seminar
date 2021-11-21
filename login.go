@@ -7,11 +7,22 @@ import (
 	//"prijava"
 	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/gocolly/colly"
+	"golang.org/x/crypto/bcrypt"
 
 	//"github.com/lepilo00/seminar/shramba"
 	//"github.com/lepilo00/seminar/storitev/oglas"
 	"github.com/lepilo00/seminar/storitev/uporabnik"
 )
+
+func HashPass(pass string) (string, error) {
+	bytes, err := bcrypt.GenerateFromPassword([]byte(pass), 14)
+	return string(bytes), err
+}
+
+func CheckPassHash(pass, hash string) bool {
+	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(pass))
+	return err == nil
+}
 
 func (h *Handler) Registracija(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
