@@ -3,6 +3,7 @@ package oglas
 type Oglas struct {
 	IDoglasa  int
 	AvtoOglas Avto
+	//Uporabnik User
 }
 
 type Avto struct {
@@ -20,18 +21,18 @@ type Avto struct {
 }
 
 type Neki struct {
-	repo repozitorijInterface
+	repoOglas repozitorijInterface
 }
 type repozitorijInterface interface {
-	Ustvari(og Oglas) error
+	UstvariOglas(ogs Oglas) error
 }
 
 func Nov(repo repozitorijInterface) *Neki {
 	return &Neki{
-		repo: repo,
+		repoOglas: repo,
 	}
 }
 
 func (og *Neki) Ustvari(oglas Oglas) error {
-	return og.repo.Ustvari(ogs)
+	return og.repoOglas.UstvariOglas(ogs)
 }

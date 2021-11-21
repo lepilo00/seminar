@@ -88,7 +88,31 @@ func (h *Handler) Registracija(w http.ResponseWriter, r *http.Request) {
 }
 
 func (hh *Handler) ObjavaOglasa(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
+	}
 
+	if err := r.ParseForm(); err != nil {
+		fmt.Println("Napaka1")
+	}
+
+	oglas1 := oglas.Oglas{
+		IDoglasa: 1,
+		AvtoOglas: Avto{
+			ZnamkaAvta:   r.FormValue("username"),
+			ModelAvta:    r.FormValue("username"),
+			Cena:         r.FormValue("username"),
+			Letnik:       r.FormValue("username"),
+			PrevozenihKM: r.FormValue("username"),
+			Gorivo:       r.FormValue("username"),
+			PrvaReg:      r.FormValue("username"),
+			LetoProiz:    r.FormValue("username"),
+			Menjalnik:    r.FormValue("username"),
+			VIMstev:      r.FormValue("username"),
+			KrajOgleda:   r.FormValue("username"),
+		},
+	}
 }
 
 func main() {
@@ -99,7 +123,7 @@ func main() {
 	defer repo.DB.Close()
 
 	u := uporabnik.Nov(repo)
-	ogs := oglas.Nov(repo)
+	ogs := oglas.Nov(repoU)
 	h := NovHandler(u)
 	hh := NovHandler1(ogs)
 
