@@ -34,5 +34,5 @@ func Nov(repo repozitorijInterface) *Neki {
 }
 
 func (og *Neki) Ustvari(oglas Oglas) error {
-	return og.repoOglas.UstvariOglas(ogs)
+	return og.repoOglas.UstvariOglas(oglas)
 }
