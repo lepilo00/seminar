@@ -23,7 +23,7 @@ func (hh *Handler) ObjavaOglasa(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Napaka1")
 	}
 
-	oglas1 := oglas.Oglas{
+	ogs := oglas.Oglas{
 		IDoglasa: 1,
 		AvtoOglas: oglas.Avto{
 			ZnamkaAvta:   r.FormValue("username"),
