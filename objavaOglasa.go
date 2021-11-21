@@ -12,6 +12,7 @@ import (
 	//"github.com/lepilo00/seminar/storitev/oglas"
 )
 
+// klic funkcije v main programu
 func (hh *Handler) ObjavaOglasa(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Redirect(w, r, "/", http.StatusSeeOther)

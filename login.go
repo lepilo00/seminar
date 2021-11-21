@@ -4,13 +4,10 @@ import (
 	"fmt"
 	"net/http"
 
-	//"prijava"
 	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/gocolly/colly"
 	"golang.org/x/crypto/bcrypt"
 
-	//"github.com/lepilo00/seminar/shramba"
-	//"github.com/lepilo00/seminar/storitev/oglas"
 	"github.com/lepilo00/seminar/storitev/uporabnik"
 )
 
@@ -24,6 +21,7 @@ func CheckPassHash(pass, hash string) bool {
 	return err == nil
 }
 
+// klic funkcije v main programu
 func (h *Handler) Registracija(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
