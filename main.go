@@ -32,7 +32,7 @@ func NovHandler(uporabnik *uporabnik.Uporabnik) *Handler {
 	}
 }
 
-func NovHandler1(oglas *oglas.Oglas) *Handler {
+func NovHandler1(oglas *oglas.Neki) *Handler {
 	return &Handler{
 		oglas: oglas,
 	}
