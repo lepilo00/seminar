@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<link href="style.css" type="text/css" rel="stylesheet">
+    </head>
+
+    <h2>Hitro iskanje osebnih vozil</h2>
+
+   <!--  <form action="/pošljisem.php"> -->
+    <form action="/oglas"> 
+        <label for="znamka">Znamka</label>
+        <select name="cars" id="cars">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="opel">Opel</option>
+          <option value="audi">Audi</option>
+          <option value="volkswagen">Voklswagen</option>
+          <option value="fiat">Fiat</option>
+          <option value="citroen">Citroen</option>
+          <option value="bmw">BMW</option>
+        </select>
+        <br><br>
+
+        <label for="model">Model</label>
+        <input type="text" id="model" name="model" placeholder="model"><br><br>
+
+        <label for="cena">Cena</label>
+        <input type="text" id="cena" name="cena" placeholder="cena"><br><br>
+
+        <label for="letnik">Letnik</label>
+        <input type="number" id="letnik" name="letnik"placeholder="letnik"><br><br>
+
+        <p>Gorivo</p>
+          <input type="checkbox" id="bencin" name="gorivo" placeholder="bencin">
+          <label for="bencin">bencin</label><br>
+          <input type="checkbox" id="dizel" name="gorivo" placeholder="dizel">
+          <label for="dizel">dizel</label><br>
+          <input type="checkbox" id="elektrika" name="gorivo" placeholder="elektrika">
+          <label for="javascript">elektrika</label><br>
+          <input type="checkbox" id="hibrid" name="gorivo" placeholder="hibrid">
+          <label for="hibrid">hibrid</label><br><br>
+
+        <p>Menjalnik</p>
+          <input type="checkbox" id="rocni" name="menjalnik" placeholder="rocni">
+          <label for="ročni">ročni</label><br>
+          <input type="checkbox" id="samodejni" name="menjalnik" placeholder="samodejni">
+          <label for="dizel">samodejni</label><br><br>
+
+        <label for="prevozeni_kilometri">Prevoženi kilometri</label>
+        <input type="number" id="prevozeni_kilometri" name="prevozeni_kilometri" placeholder="prevoženi kilometri"><br><br>
+
+        <label for="prva-registracija">Prva registracija</label>
+        <input type="number" id="prva-registracija" name="prva-registracija" placeholder="prva registracija"><br><br>
+
+        <label for="leto_proizvodnje">Leto proizvodnje</label>
+        <input type="number" id="leto_proizvodnje" name="leto_proizvodnje" placeholder="leto proizvodnje"><br><br>
+
+        <label for="VIM_stevilka">VIM številka</label>
+        <input type="text" id="VIM_stevilka" name="VIM_stevilka" placeholder="VIM številka"><br><br>
+
+        <label for="kraj_ogleda">Kraj ogleda</label>
+        <input type="text" id="kraj_ogleda" name="kraj_ogleda" placeholder="kraj ogleda"><br><br><br>
+        
+        <input type="submit" value="Iskanje vozil">
+    </form>
+    </body>
+</html>
+
+    
