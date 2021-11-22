@@ -53,7 +53,7 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	izpis()
+
 	u := uporabnik.Nov(repo)
 	oglas12 := oglas.Nov(repoOglas)
 	h := NovHandler(u)
