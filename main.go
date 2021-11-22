@@ -23,7 +23,7 @@ type (
 var tpl *template.Template
 
 func init() {
-	tpl = template.Must(template.ParseFiles("index.html"))
+	tpl = template.Must(template.ParseFiles("html/index.html"))
 }
 
 func NovHandler(uporabnik *uporabnik.Uporabnik) *Handler {
@@ -39,7 +39,7 @@ func NovHandler1(oglas *oglas.Neki) *Handler {
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	tpl.ExecuteTemplate(w, "index.html", nil)
+	tpl.ExecuteTemplate(w, "html/index.html", nil)
 }
 
 func main() {

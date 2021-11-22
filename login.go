@@ -51,7 +51,7 @@ func (h *Handler) Registracija(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("Password: ", usr1.Password, "\nHash: ", hashP, "\nMatch: ", checkPass)
 
-	tpl.ExecuteTemplate(w, "login.html", nil)
+	tpl.ExecuteTemplate(w, "html/login.html", nil)
 
 	h.uporabnik.Ustvari(usr1)
 }
