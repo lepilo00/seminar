@@ -40,4 +40,6 @@ func (hh *Handler) ObjavaOglasa(w http.ResponseWriter, r *http.Request) {
 		},
 	}
 
+	hh.oglas.Ustvari(ogs)
+
 }
