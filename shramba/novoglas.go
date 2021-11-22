@@ -24,10 +24,10 @@ func NovOglasRepozitory() (*OglasRepozitorij, error) {
 }
 
 func (r *OglasRepozitorij) UstvariOglas(ogs oglas.Oglas) error {
-	//_, err := r.DB.Exec(`INSERT INTO user (username, password, email, isAdmin) VALUES (?, ?, ?, ?)`, ogs.Username, usr.Password, usr.Email, usr.IsAdmin)
-	//if err != nil {
-	//	return fmt.Errorf("napaka pri vstavljanju v bazo: %w", err)
-	//}
+	_, err := r.DB.Exec(`INSERT INTO oglas (IDoglasa, ZnamkaAvta,ModelAvta,Cena,Letnik,PrevozenihKM,Gorivo,PrvaReg,LetoProiz,Menjalnik,VIMstev,KrajOgleda) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, ogs.IDoglasa, ogs.AvtoOglas.ZnamkaAvta, ogs.AvtoOglas.ModelAvta, ogs.AvtoOglas.Cena, ogs.AvtoOglas.Letnik, ogs.AvtoOglas.PrevozenihKM, ogs.AvtoOglas.Gorivo, ogs.AvtoOglas.PrvaReg, ogs.AvtoOglas.LetoProiz, ogs.AvtoOglas.Menjalnik, ogs.AvtoOglas.VIMstev, ogs.AvtoOglas.KrajOgleda)
+	if err != nil {
+		return fmt.Errorf("napaka pri vstavljanju v bazo: %w", err)
+	}
 
-	//return nil
+	return nil
 }
