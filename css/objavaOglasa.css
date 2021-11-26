@@ -26,3 +26,8 @@ input[type=text], select {
   input[type=submit]:hover {
     background-color: #45a049;
   }
+
+  .menjalnik{
+    background-color: royalblue;
+    margin-left: 2cm;
+  }
