@@ -4,25 +4,16 @@ import (
 	"fmt"
 	"net/http"
 
-	_ "github.com/go-sql-driver/mysql"
-	_ "github.com/gocolly/colly"
-	"golang.org/x/crypto/bcrypt"
-
 	"github.com/lepilo00/seminar/storitev/uporabnik"
+	"golang.org/x/crypto/bcrypt"
 )
 
-func HashPass(pass string) (string, error) {
+func HashPassRegistracija(pass string) (string, error) {
 	bytes, err := bcrypt.GenerateFromPassword([]byte(pass), 14)
 	return string(bytes), err
 }
 
-func CheckPassHash(pass, hash string) bool {
-	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(pass))
-	return err == nil
-}
-
-// klic funkcije v main programu
-func (h *Handler) Login(w http.ResponseWriter, r *http.Request) {
+func (h *Handler) Registracija(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
@@ -42,14 +33,10 @@ func (h *Handler) Login(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(usr1.Password)
 
 	//kreiranje hash oblike passworda
-	hashP, err := HashPass(usr1.Password)
+	_, err := HashPassRegistracija(usr1.Password)
 	if err != nil {
 		fmt.Println("Napaka pri hashu passworda!")
 	}
-
-	checkPass := CheckPassHash(usr1.Password, hashP)
-
-	fmt.Println("Password: ", usr1.Password, "\nHash: ", hashP, "\nMatch: ", checkPass)
 
 	tpl.ExecuteTemplate(w, "html/login.html", nil)
 

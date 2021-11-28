@@ -12,7 +12,7 @@ type UporabnikRepozitorij struct {
 }
 
 func NovUpoabnikRepozitory() (*UporabnikRepozitorij, error) {
-	db, err := sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/testdb") //ne dela
+	db, err := sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/testdb")
 	if err != nil {
 		return nil, fmt.Errorf("napaka pri kreiranju repozitorija: %w", err)
 	}

@@ -41,8 +41,9 @@ func main() {
 	hh := NovHandler1(oglas12)
 
 	http.HandleFunc("/", index)
-	http.HandleFunc("/login", h.Registracija)  //login.go
-	http.HandleFunc("/oglas", hh.ObjavaOglasa) //objavaOglasa.go
+	http.HandleFunc("/login", h.Login)                //login.go
+	http.HandleFunc("/objavaOglasa", hh.ObjavaOglasa) //objavaOglasa.go
+	http.HandleFunc("/registracija", Registracija)
 	http.ListenAndServe(":9090", nil)
 
 }
