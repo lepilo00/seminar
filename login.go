@@ -53,5 +53,5 @@ func (h *Handler) Login(w http.ResponseWriter, r *http.Request) {
 
 	tpl.ExecuteTemplate(w, "html/login.html", nil)
 
-	h.uporabnik.Ustvari(usr1)
+	//h.uporabnik.Ustvari(usr1)
 }
