@@ -51,7 +51,7 @@ func (h *Handler) Login(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("Password: ", usr1.Password, "\nHash: ", hashP, "\nMatch: ", checkPass)
 
-	tpl.ExecuteTemplate(w, "html/login.html", nil)
+	tpl.ExecuteTemplate(w, "html/login.html", usr1)
 
 	//h.uporabnik.Ustvari(usr1)
 }

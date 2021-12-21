@@ -16,7 +16,7 @@ import (
 var tpl *template.Template
 
 func init() {
-	tpl = template.Must(template.ParseFiles("html/index.html"))
+	tpl = template.Must(template.ParseGlob("html/*.html")) //vse html datoteke damo v eno spremelnjivko
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
@@ -43,7 +43,7 @@ func main() {
 	http.HandleFunc("/", index)
 	http.HandleFunc("/login", h.Login)                //login.go
 	http.HandleFunc("/objavaOglasa", hh.ObjavaOglasa) //objavaOglasa.go
-	http.HandleFunc("/registracija", Registracija)
+	//http.HandleFunc("/registracija", Registracija)
 	http.ListenAndServe(":9090", nil)
 
 }
